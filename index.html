@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="Restful">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>RESTful Angular</title>
+  </head>
+  <body >
+        <div class="navbar" >
+            <a class="navbar-text" ui-sref="#">Menu</a>
+            <a class="navbar-text" ui-sref="toDoList">To Do List</a></li>
+            <a class="navbar-text" ui-sref="jokes">Jokes</a></li>
+        </div>
+        <!-- MAIN CONTENT -->
+        <div class="container">
+        
+            <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+            <div ui-view></div>
+        
+        </div>
+    <!-- ANGULAR -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!-- 3rd PARTY DEPS -->
+    <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+
+    <!-- General -->
+    <script type="text/javascript" src="app.js"></script>
+
+    <!-- Controllers -->
+    <script type="text/javascript" src="controllers/toDoListController.js"></script>
+    <script type="text/javascript" src="controllers/jokesController.js"></script>
+
+    <!-- Services -->
+    <script type="text/javascript" src="services/item.js"></script>
+    <script type="text/javascript" src="services/jokes.js"></script>
+  </body>
+</html>

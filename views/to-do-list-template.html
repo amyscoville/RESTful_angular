@@ -1,0 +1,33 @@
+<div class="listDiv">
+    <h1>To Do List</h1>
+    <button ng-click="todo.editMode = null">reset</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in todo.listArr">
+                <td> 
+                    <span ng-hide="todo.editMode === item.id"> {{item.title}} </span>  
+                    <input type="text" ng-show="todo.editMode === item.id" ng-click="todo.setEdit(item.id)" ng-model="todo.currentItem.title"> 
+                </td>
+                <td> 
+                    <span ng-hide="todo.editMode === item.id"> {{item.description}} </span> 
+                    <input type="text" ng-show="todo.editMode === item.id" ng-click="todo.setEdit(item.id)" ng-model="todo.currentItem.description"> 
+                </td>
+                <td><button ng-click="todo.remove(item.id)">Delete</button></td>
+                <td> 
+                    <button ng-click="todo.setEdit(item.id)" ng-hide="todo.editMode === item.id">Edit</button> 
+                    <button ng-click="todo.saveEdit(item.id)" ng-show="todo.editMode === item.id">Save</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="text" ng-model="todo.title" placeholder="Type title here">
+    <input type="text" ng-model="todo.description" placeholder="Type description here">
+    <button ng-click="todo.addItem()">Enter</button>
+</div>
