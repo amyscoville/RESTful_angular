@@ -10,7 +10,13 @@
         return service;
 
         function getRandJoke() {
-            return $http.get('http://api.icndb.com/jokes/random?exclude=[explicit]');
+            return $http.get('http://api.icndb.com/jokes/random?exclude=explicit')
+                .then(function(response){
+                    return {
+                        joke: response.data.value.joke
+                    };
+                });
         }
     }
 })();
+

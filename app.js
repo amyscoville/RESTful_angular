@@ -18,13 +18,14 @@
                 url: '/jokes',
                 templateUrl: 'views/jokes-template.html',
                 controller: 'jokesController as jokesCtrl',
-                // resolve: {
-                //     joke: function() {
-                //         return Jokes.getRandJoke().then(function(response){
-                //             vm.joke = response.data.value.joke;
-                //             })
-                //     }
-                // }
+                resolve: {
+                    randJoke: function(Jokes) {
+                        return Jokes.getRandJoke()
+                            .then(function(response){
+                                return response.joke;
+                            });
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/to-do-list');

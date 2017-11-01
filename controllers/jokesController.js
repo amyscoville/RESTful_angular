@@ -3,21 +3,24 @@
     .module('Restful')
     .controller('jokesController', jokesCtrl);
 
-    function jokesCtrl(Jokes) {
+    function jokesCtrl(Jokes,randJoke) {
         var vm = this;
 
-        vm.joke = '';
-        vm.replaceJoke = replaceJoke;
+        vm.getJoke = getJoke;
+        vm.joke = randJoke
 
-        Jokes.getRandJoke().then(function(response){
-            vm.joke = response.data.value.joke;
-        });
-
-        function replaceJoke() {
+        function getJoke() {
             Jokes.getRandJoke().then(function(response){
-                vm.joke = response.data.value.joke;
+                var jokeText = decodeHtml(response.joke);
+                vm.joke = jokeText;
             });
         }
-    }
 
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+    }
 })();
+
