@@ -10,9 +10,11 @@
                 url: '/to-do-list',
                 templateUrl: 'views/to-do-list-template.html',
                 controller: 'toDoListController as todo',
-                // resolve: {
-
-                // }
+                resolve: {
+                    listItem: function(Item) {
+                        return Item.list();
+                    }
+                }
             })
             .state('jokes', {
                 url: '/jokes',

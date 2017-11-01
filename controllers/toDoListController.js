@@ -3,10 +3,10 @@
     .module('Restful')
     .controller('toDoListController', toDoListCtrl);
 
-    function toDoListCtrl(Item) {
+    function toDoListCtrl(Item, listItem) {
         var vm = this;
 
-        vm.listArr = [];
+        vm.listArr = listItem;
         vm.title = '';
         vm.description = '';
         vm.addItem = addItem;
@@ -15,11 +15,6 @@
         vm.setEdit = setEdit;
         vm.currentItem = {};
         vm.saveEdit = saveEdit;
-
-        Item.list().then(function(response){
-            vm.listArr = response.data;
-            
-        });
 
         function addItem() {
             Item.add(vm.title, vm.description).then(function(response){

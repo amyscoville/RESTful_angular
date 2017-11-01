@@ -13,7 +13,10 @@
         return service;
 
         function list() {
-            return $http.get('http://secret-escarpment-99471.herokuapp.com/item');
+            return $http.get('http://secret-escarpment-99471.herokuapp.com/item')
+                .then(function(response){
+                    return response.data;
+                });
         }
 
         function add(titleVal, descriptionVal) {
